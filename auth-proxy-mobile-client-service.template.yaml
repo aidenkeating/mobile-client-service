@@ -51,7 +51,7 @@ objects:
         serviceAccountName: proxy
         containers:
         - name: mobile-client-service
-          image: aidenkeatingrht/mobile-client-service:1.0.0
+          image: aerogear/mobile-client-service:latest
           ports:
           - containerPort: 4000
         - name: oauth-proxy
@@ -73,3 +73,7 @@ objects:
           volumeMounts:
           - mountPath: /etc/tls/private
             name: proxy-tls
+        volumes:
+          - name: proxy-tls
+            secret:
+              secretName: proxy-tls

@@ -43,6 +43,16 @@ For more information on parameters, run:
 oc process -f mobile-client-service.template.yaml --parameters
 ```
 
+The OpenShift `oauth-proxy` can also be used with the server using:
+
+```bash
+oc project <namespace>
+oc process -f auth-proxy-mobile-client-service.template.yaml | oc create -f -
+```
+
+This will create a proxy and provide an access token in the `X-Forwarded-Access-Token`
+header for each request to the server. 
+
 ## Test
 
 ```bash
